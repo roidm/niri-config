@@ -5,3 +5,12 @@
 ![2](https://raw.githubusercontent.com/roidm/niri-config/main/pics/2.png "Image 2")
 
 
+## 📋 Software
+
+- Niri 
+- Waybar
+- Swaync
+- Waypaper
+- Foot
+- Fuzzel
+

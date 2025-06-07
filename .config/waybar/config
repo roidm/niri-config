@@ -1,0 +1,261 @@
+{
+  "layer": "top",
+  "output": ["DP-1"],
+  "gtk-layer-shell": "true",
+  "spacing": 0,
+  "margin-bottom": -2,
+  "height": 28,
+  "modules-left": ["niri/workspaces","niri/window"],
+  "modules-center": ["clock"],
+  "modules-right": ["custom/network","cpu","custom/weather","temperature","custom/gputmp","wireplumber","tray","custom/power"],
+
+  "niri/workspaces": {
+     "format": "{icon}",
+     "all-outputs": false,
+     "format-icons": {
+        "active":"",
+        "focused":"",
+        "default":"",
+	}
+  },
+
+  "niri/window": {
+    "format": "<span font_family='AdwaitaMono Nerd Font'>{}</span>",
+    "all-outputs": true,
+    "max-length": 50,  
+    "tooltip": false
+  }, 
+
+  "temperature": {
+    "hwmon-path": "/sys/module/k10temp/drivers/pci:k10temp/0000:00:18.3/hwmon/hwmon3/temp4_input",
+    "format": " {temperatureC}°C",
+    "interval": 2,
+    "on-click" : "",
+  },
+
+  "tray": {
+    "spacing": 8,
+    "icon-size": 14,
+  },
+  "clock": {
+    "timezone": "Europe/Madrid",
+    "format": "{:%b %d    %H:%M}",
+    "on-click" : "swaync-client -t",
+    "tooltip-format": "<span font_family='Inconsolata Nerd Font'><tt><big>{calendar}</big></tt></span>",
+    "calendar": {
+	"mode":	"year",
+	"mode-mon-col":	3,
+	"weeks-pos": "right",
+	"on-scroll": 1,
+	"format": {
+		"months":   "<span font_family='Inconsolata Nerd Font'><span color='#f1cf8a'><b>{}</b></span></span>",
+		"days":     "<span font_family='Inconsolata Nerd Font'><span color='#c68aee'><b>{}</b></span></span>",
+		"weeks":    "<span font_family='Inconsolata Nerd Font'><span color='#78dba9'><b> w{}</b></span></span>",
+		"weekdays": "<span font_family='Inconsolata Nerd Font'><span color='#ffcc66'><b>{}</b></span></span>",
+		"today":    "<span font_family='Inconsolata Nerd Font'><span color='#70A5EB'><b>{}</b></span></span>"
+	}
+     },
+     "actions":  {
+	"on-click-right": "mode",
+	"on-scroll-up": "tz_up",
+	"on-scroll-down": "tz_down",
+	"on-scroll-up": "shift_up",
+	"on-scroll-down": "shift_down"
+    },    
+  },
+
+  "power-profiles-daemon": {
+    "format": "{icon}",
+    "tooltip-format": "{profile}",
+    "tooltip": true,
+    "format-icons": {
+      "performance": "󰓅",
+      "balanced": "󰾅",
+      "power-saver": "󰾆"
+    }
+  },
+
+  "cpu": {
+    "format": "  {usage}%",
+    "tooltip": false,
+    "interval": 2,
+    "on-click" : "",
+  },
+
+  "memory": {
+    "format": "{}% ",
+    "interval": 5,
+    "on-click" : "",
+  },
+
+  "custom/memory": {
+    "format": "{} ",
+    "interval": 5,
+    "exec": "$HOME/.local/bin/mem3",
+    "on-click" : "",
+  },
+
+  "disk": {
+    "interval": 30,
+    "format": "{percentage_used}% ",
+    "path": "/",
+    "on-click" : "",
+  },
+
+  "network": {
+    "format-wifi": "",
+    "format-ethernet": "{ifname}",
+    "format-linked": "{ifname} (No IP) ",
+    "format-disconnected": "睊 Not connected",
+    "format-alt": "{ifname}: {ipaddr}/{cidr}",
+    "tooltip-format": "{essid} {signalStrength}%"
+  },
+
+  "wireplumber": {
+    "format": "<span font_family='Font Awesome 6 Free'>{icon}</span> {volume}%",
+    "format-muted": "",
+    "on-click": "",
+    "format-icons": {
+    "default": ["", "", ""]
+    },
+  },  
+
+  "pulseaudio": {
+    "format": "{icon} {volume}%",
+    "format-bluetooth": "{icon} {volume}% {format_source}",
+    "format-bluetooth-muted": "  {volume}% {format_source}",
+    "format-muted": " {format_source}",
+    "format-source": "",
+    "format-source-muted": "",
+    "format-icons": {
+      "headphone": "",
+      "hands-free": "",
+      "headset": "",
+      "phone": "",
+      "portable": "",
+      "car": "",
+      "default": ["", "", ""]
+    },
+    "tooltip-format": "{desc}, {volume}%",
+    "on-click": "pactl set-sink-mute @DEFAULT_SINK@ toggle",
+    "on-click-right": "pactl set-source-mute @DEFAULT_SOURCE@ toggle",
+    "on-click-middle": "pavucontrol"
+  },
+
+  "custom/power": {
+    "format": "",
+    "on-click": "nwg-bar",
+    "on-click-right": "killall -9 nwg-bar",
+    "tooltip": false
+  },
+
+  "custom/launcher": {
+    "format": "",
+    "on-click": "fuzzel",
+    "on-click-right": "killall -9 fuzzel",
+    "tooltip": false
+  },
+
+  "custom/dot4": {
+    "format": "",
+    "on-click" : "",
+  },
+  "custom/dot": {
+    "format": "",
+    "on-click" : "",
+  },
+  "custom/dot2": {
+    "format": " ",
+    "on-click" : "",
+  },
+  "custom/dot3": {
+    "format": " ",
+    "on-click" : "",
+  },
+  "custom/arrow1": {
+    "format": ""
+  },
+  "custom/arrow3": {
+    "format": ""
+  },
+  "custom/arrow4": {
+    "format": ""
+  },
+  "custom/arrow5": {
+    "format": ""
+  },
+  "custom/arrow6": {
+    "format": ""
+  },
+  "custom/arrow2": {
+    "format": ""
+  },
+  "custom/network": {
+    "format": "{}",
+    "exec": "$HOME/.local/bin/network-traffic.sh",
+    "on-click" : "",
+  },
+  "custom/gputmp": {
+    "format": "{}",
+    "exec": "$HOME/.local/bin/gputemp",
+    "interval": 3,
+    "on-click" : "",
+  },
+  "custom/uptime": {
+    "format": "{}  ",
+    "interval": 30,
+    "exec": "$HOME/.local/bin/upt2",
+    "on-click" : "",
+  },
+  "custom/kernel": {
+    "format": " {}",
+    "interval": 7200,
+    "exec": "uname -r | cut -d '-' -f1",
+    "on-click" : "",
+  },
+  "custom/weather": {
+    "format": "<span font_family='Weather Icons'>{icon}</span> {0}",
+    "format-icons": {
+      "01d": "",
+      "01n": "",
+      "02d": "",
+      "02n": "",
+      "03d": "",
+      "03n": "",
+      "04d": "",
+      "04n": "",
+      "09d": "",
+      "09n": "",
+      "10d": "",
+      "10n": "",
+      "11d": "",
+      "11n": "",
+      "13d": "",
+      "13n": "",
+      "50d": "",
+      "50n": ""
+    },
+    "tooltip": false,
+    "interval": 3600,
+    "exec": "python3 ~/.config/waybar/modules/openWeatherMap.py",
+    "return-type": "json",
+    "escape": true,
+    "on-click" : "",
+  },
+    "custom/weather2": {
+    "exec": "python ~/.config/waybar/modules/weather.py",
+    "interval": 3600,
+    "restart-interval": 300,
+    "return-type": "json",
+    "on-click": "xdg-open https://weather.com/es-ES/tiempo/hoy/l/e6da87587afb2b927ff2f417b9568a9b4e66e7b37eaa05332d199c7bfa54a141",
+    "format-alt": "{alt}"
+  },
+  "custom/eix": {
+    "format": "{}  ",
+    "interval": 3600, // every hour
+    "exec": "(eix --installed --upgrade --format '<installedversions:NAMEVERSION>') | wc -l",
+    "exec-if": "exit 0", // always run; consider advanced run conditions
+    "signal": 8,
+    "tooltip": false,
+  }
+}

@@ -1,0 +1,108 @@
+window#waybar {
+        background-color: rgba(11, 14, 18, 0.99);
+        transition-property: background-color;
+        transition-duration: .5s;
+}
+
+* {
+        font-family: "UbuntuSans Nerd Font", "Symbols Nerd Font";
+        font-size: 11pt;
+        font-weight: 600;
+}
+
+tooltip {
+        border: 0px;
+        margin: 5px 5px 5px 5px;
+        background: rgba(16, 20, 25, 0.9);
+        /* tooltip background */
+        border-radius: 6px;
+        /* tooltip rounded corners */
+        box-shadow: 1px 1px 2px 1px rgba(0, 0, 0, 0.2);
+}
+
+#workspaces {
+        /*margin-left: 7px;*/
+        padding-left: 7px;
+}
+
+#workspaces button {
+        padding: 0px 0px 0px 0px;
+        background-image: url('icons/default.svg');
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: 9px;
+        transition: all 0.16s ease-in-out;
+}
+
+#workspaces button.urgent {
+        color: #fab387;
+}
+
+#workspaces button:hover {}
+
+#workspaces button.active {
+        background-image: url('icons/active.svg');
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: 9px;
+}
+
+#workspaces button.focused {
+        background-image: url('icons/focus.svg');
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: 28px;
+        min-width: 28px;
+}
+
+label.module {
+        padding: 0px 10px 0px 8px;
+}
+
+#tray {
+        padding: 1px 4px 0px 4px;
+}
+
+
+#tray menu menuitem:hover {
+        background-color: #101419;
+        border-radius: 5px;
+}
+
+#window {
+        font-size: 10.5pt;
+        font-weight: 600;
+        padding: 0px 28px 0px 8px;
+        margin-left: 4px;
+        transition: all 0.08s ease-in-out;
+}
+
+#clock {
+        font-size: 11pt;
+}
+
+#cpu {
+        font-size: 10.5pt;
+}
+
+#wireplumber {
+        font-size: 10.5pt;
+}
+
+#temperature {
+        font-size: 10.5pt;
+}
+
+#custom-gputmp {
+        font-size: 10.5pt;
+}
+
+#custom-weather {
+        font-size: 10.5pt;
+}
+
+#custom-network {
+        font-size: 10.5pt;
+}
+
+#custom-power {}

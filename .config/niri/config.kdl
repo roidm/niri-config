@@ -1,0 +1,422 @@
+hotkey-overlay {
+    skip-at-startup
+}
+
+cursor {
+    hide-when-typing
+    //hide-after-inactive-ms 4000
+}
+
+environment {
+    DISPLAY ":0"
+}
+
+input {
+    keyboard {
+        xkb {
+            layout "es"
+            options "compose:menu"
+        }
+
+        repeat-delay 250
+        repeat-rate 40
+    }
+
+    mouse {
+        accel-speed 0.3
+        accel-profile "flat"
+    }
+
+    focus-follows-mouse 
+    //max-scroll-amount="0%"
+    warp-mouse-to-focus
+}
+
+output "Microstep MSI G273CQ CD0H013901092" {
+    position x=0 y=0
+    mode "2560x1440@119.989"
+    background-color "#000000"
+}
+
+output "HKC OVERSEAS LIMITED 27E6QC 0000000000001" {
+    position x=2560 y=0
+    mode "2560x1440@119.871"
+    background-color "#000000"
+}
+
+
+layout {
+    gaps 14
+    center-focused-column "on-overflow"
+    background-color "transparent"
+    //empty-workspace-above-first
+    always-center-single-column
+    preset-column-widths {
+        proportion 0.33
+        proportion 0.5
+        proportion 0.66
+        proportion 1.0
+    }
+    default-column-width { proportion 0.5; }
+    preset-window-heights {
+        proportion 0.33
+        proportion 0.5
+        proportion 0.66
+        proportion 1.0
+    }
+    focus-ring {
+        width 2
+        inactive-color "transparent"
+        active-color "transparent"
+    }
+    border {
+        off
+    }
+    shadow {
+        on
+        softness 16
+        draw-behind-window true
+        spread 7
+        offset x=0 y=0
+        color "#000007AF"
+    }
+    tab-indicator {
+	hide-when-single-tab
+        place-within-column
+        position "top"
+        length total-proportion=0.98
+        gap 0
+        width 3
+        gaps-between-tabs 2
+        corner-radius 12
+        active-color "#234F85ff"
+        inactive-color "#234F855f"
+    }
+    insert-hint {
+        color "#45858880"
+        gradient from="#45858800" to="#45858880" angle=0
+    }
+    struts {
+        left 4
+        right 4
+        top 4
+        bottom 0
+    }
+}
+
+prefer-no-csd
+screenshot-path "~/Pictures/Screenshots/%Y-%m-%d_%H-%M-%S.png"
+
+animations {
+    slowdown 0.4
+    workspace-switch {
+        spring damping-ratio=1.0 stiffness=300 epsilon=0.00005
+    }
+    window-open {
+        duration-ms 300
+        curve "ease-out-quad"
+    }
+    window-close {
+        duration-ms 200
+        curve "ease-out-quad"
+    }
+    horizontal-view-movement {
+        spring damping-ratio=1.0 stiffness=500 epsilon=0.00005
+    }
+    window-movement {
+		spring damping-ratio=1.0 stiffness=500 epsilon=0.00005
+    }
+    window-resize {
+		spring damping-ratio=1.0 stiffness=500 epsilon=0.00005
+    }
+    config-notification-open-close {
+		spring damping-ratio=1.0 stiffness=500 epsilon=0.00005
+    }
+    screenshot-ui-open {
+        duration-ms 300
+        curve "ease-out-quad"
+    }
+}
+
+gestures {
+    hot-corners {
+        off
+    }
+}
+
+overview {
+    zoom 0.70
+}
+
+layer-rule {
+    match namespace="^wallpaper$"
+    place-within-backdrop true
+}
+
+/-layer-rule { 
+    match namespace="^swww-daemon$"
+    place-within-backdrop true
+}
+
+layer-rule {
+    match namespace="^launcher$"
+    match namespace="^sherlock$"
+        shadow {
+        on
+        softness 30
+        draw-behind-window true
+        spread 6
+        offset x=0 y=0
+        color "#000007AF"
+    }
+    geometry-corner-radius 10
+}
+
+layer-rule {
+    match namespace="^waybar$"
+        shadow {
+        on
+        softness 4
+        draw-behind-window true
+        spread 1
+        offset x=0 y=0
+        color "#000007AF"
+    }
+}
+
+window-rule {
+    match app-id="^niri$"
+    opacity 1.000000
+}
+
+window-rule {
+    match app-id="^(pwvucontrol)" title=""
+    open-floating true
+}
+window-rule {
+    match app-id="^(Volume Control)" title=""
+    open-floating true
+}
+window-rule {
+    match app-id="^(dialog)" title=""
+    open-floating true
+}
+window-rule {
+    match app-id="^(file_progress)" title=""
+    open-floating true
+}
+window-rule {
+    match app-id="^(confirm)" title=""
+    open-floating true
+}
+window-rule {
+    match app-id="^(download)" title=""
+    open-floating true
+}
+window-rule {
+    match app-id="^(error)" title=""
+    open-floating true
+}
+window-rule {
+    match app-id="^(notification)" title=""
+    open-floating true
+}
+
+window-rule {
+    match is-active=false
+    opacity 0.97
+}
+
+window-rule {
+    match at-startup=true
+    open-on-output "DP-1"
+}
+
+window-rule {
+    geometry-corner-radius 10
+    clip-to-geometry true
+}
+
+window-rule {
+    match app-id="dev.geopjr.Tuba" 
+    match app-id="teams-for-linux"
+    open-on-output "DP-2"
+}
+
+window-rule {
+    match app-id=r#"firefox$"# title="^Picture-in-Picture$"
+    match app-id=r#"firefox$"# title="^About Mozilla Firefox$"
+    match app-id=r#"mpv$"#
+    match app-id=r#"gcr-prompter$"# 
+    match title=r#"Proton VPN$"#
+    open-floating true
+}
+
+window-rule {
+    match app-id=r#"firefox$"#
+    open-maximized true
+    open-on-output "DP-1"
+}
+
+window-rule {
+    match app-id=r#"^footclient$"#
+    default-column-width { proportion 0.5; }
+}
+
+window-rule {
+    match app-id=r#"spad$"#
+    default-column-width { proportion 0.5; }
+    open-floating true
+}
+
+
+window-rule {
+    match app-id=r#"gnome-disks$"#
+    match app-id=r#"org.gnome.DiskUtility$"# 
+    default-column-width { proportion 0.5; }
+    open-floating true
+}
+
+window-rule {
+    match app-id=r#"org.gnome.SystemMonitor$"#
+    default-column-width { fixed 1440; }
+    default-window-height { fixed 850; }
+    open-floating true
+}
+
+window-rule {
+    match app-id=r#"lpad$"#
+    default-column-width { fixed 1350; }
+    default-window-height { fixed 800; }
+    open-floating true
+}
+
+window-rule {
+    match app-id=r#"footnvim$"#
+    default-column-width { fixed 1500; }
+    default-window-height { fixed 1350; }
+    open-floating true
+}
+
+window-rule {
+    match app-id=r#"g$"#
+    match app-id=r#"org.gnome.Nautilus$"#
+    default-column-width { fixed 1350; }
+    default-window-height { fixed 800; }
+    open-floating true
+}
+
+spawn-at-startup "wp"
+
+binds {
+   
+    Mod+S { show-hotkey-overlay; }
+
+    Mod+Left     { focus-column-or-monitor-left; }
+    Mod+Down     { focus-window-or-workspace-down; }
+    Mod+Up       { focus-window-or-workspace-up; }
+    Mod+Right    { focus-column-or-monitor-right; }
+    Ctrl+Left    { focus-monitor-left; }
+    Ctrl+Down    { focus-monitor-down; }
+    Ctrl+Up      { focus-monitor-up; }
+    Ctrl+Right   { focus-monitor-right; }
+  
+    Mod+Shift+Left    { move-column-left-or-to-monitor-left; }
+    Mod+Shift+Down    { move-window-down-or-to-workspace-down; }
+    Mod+Shift+Up      { move-window-up-or-to-workspace-up; }
+    Mod+Shift+Right   { move-column-right-or-to-monitor-right; }
+
+    Ctrl+Alt+left  { move-column-to-monitor-left; }
+    Ctrl+Alt+Right { move-column-to-monitor-right; }
+    Ctrl+Alt+Up    { move-column-to-workspace-up; }
+    Ctrl+Alt+Down  { move-column-to-workspace-down; }
+
+    Mod+A { toggle-column-tabbed-display; }
+
+    //Ctrl+Shift+Up    { move-column-to-monitor-up; }
+    //Ctrl+Shift+Down  { move-column-to-monitor-down; }
+
+    Mod+Ctrl+Left     { move-workspace-to-monitor-left; }
+    Mod+Ctrl+Right    { move-workspace-to-monitor-right; }
+
+    Mod+Shift+Comma  { consume-window-into-column; }    
+    Mod+Shift+Period { expel-window-from-column; } 
+    
+    Mod+Comma  { consume-or-expel-window-left; }
+    Mod+Period { consume-or-expel-window-right; } 
+  
+    Mod+Home { focus-column-first; }
+    Mod+End  { focus-column-last; }
+
+    Mod+Space  { toggle-window-floating; }
+   
+    Ctrl+Alt+F { fullscreen-window; }
+
+    Mod+Tab { switch-focus-between-floating-and-tiling; }
+
+    Mod+Backslash   { consume-or-expel-window-left; }
+
+    Print { screenshot; }
+    Shift+Print { screenshot-window; }
+    Ctrl+Print { screenshot-screen; }
+
+    XF86AudioRaiseVolume allow-when-locked=true { spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "0.05+"; }
+    XF86AudioLowerVolume allow-when-locked=true { spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "0.05-"; }
+    XF86AudioMute        allow-when-locked=true { spawn "wpctl" "set-mute" "@DEFAULT_AUDIO_SINK@" "toggle"; }
+    XF86AudioMicMute     allow-when-locked=true { spawn "wpctl" "set-mute" "@DEFAULT_AUDIO_SOURCE@" "toggle"; }
+
+    XF86AudioPlay 	{ spawn "playerctl" "play-pause"; }
+    XF86AudioStop	{ spawn "playerctl" "play-pause"; }
+
+    XF86AudioPrev	{ spawn "playerctl" "previous"; }
+    XF86AudioNext	{ spawn "playerctl" "next"; }
+
+
+    Mod+Return { spawn "foot"; }
+    Mod+B { spawn "firefox-bin"; }
+    Mod+D { spawn "fuzzel"; }
+    Mod+E { spawn "fuzzel-emoji"; }
+    Alt+D { spawn "gnome-disks"; }
+    Alt+P { spawn "colorpicker"; }
+    Mod+F { spawn "nautilus" "-w"; }
+    Mod+G { spawn "gthumb"; }
+    Mod+M { spawn "gnome-system-monitor"; }
+    Mod+T { spawn "foot" "-a" "lpad"; }
+    Alt+T { spawn "alacritty" "--class" "lpad"; }
+    Mod+N { spawn "sh" "-c" "foot -a footnvim -e nvim"; }
+    Alt+N { spawn "sh" "-c" "swaync-client -t"; }
+    Mod+W { toggle-overview; }
+    Alt+W { spawn "niri_fuzzel_switcher"; }
+    Alt+H { spawn "sh" "-c" "foot -a spad -e htop";  }
+
+    Mod+Q { close-window; }
+    Mod+Ctrl+Q { quit; }
+    Ctrl+Alt+Delete { quit; }
+    Mod+X { spawn "salir"; }
+    Ctrl+Alt+L { spawn "swaylock"; }
+    
+    Mod+C { center-column; }
+    Mod+Shift+C { center-visible-columns; }
+    Mod+R { switch-preset-column-width; }
+    Mod+Shift+R { switch-preset-window-height; }
+    Mod+Ctrl+R { reset-window-height; }
+    
+    Mod+1 { focus-workspace 1; }
+    Mod+2 { focus-workspace 2; }
+    Mod+3 { focus-workspace 3; }
+    Mod+4 { focus-workspace 4; }
+    Mod+5 { focus-workspace 5; }
+    Mod+6 { focus-workspace 6; }
+    Mod+7 { focus-workspace 7; }
+    Mod+8 { focus-workspace 8; }
+    Mod+9 { focus-workspace 9; }
+    Mod+Shift+1 { move-window-to-workspace 1; }
+    Mod+Shift+2 { move-window-to-workspace 2; }
+    Mod+Shift+3 { move-window-to-workspace 3; }
+    Mod+Shift+4 { move-window-to-workspace 4; }
+    Mod+Shift+5 { move-window-to-workspace 5; }
+    Mod+Shift+6 { move-window-to-workspace 6; }
+    Mod+Shift+7 { move-window-to-workspace 7; }
+    Mod+Shift+8 { move-window-to-workspace 8; }
+    Mod+Shift+9 { move-window-to-workspace 9; }
+}

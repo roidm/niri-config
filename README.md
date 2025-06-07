@@ -13,4 +13,6 @@
 - Waypaper
 - Foot
 - Fuzzel
-
+- Neovim
+- Decay Dark Colorscheme
+- Fonts -> "JetBrainsMono NF, UbuntuSans NF, AdwaitaMono Nerd Font"

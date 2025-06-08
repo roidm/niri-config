@@ -27,18 +27,19 @@ input {
         accel-profile "flat"
     }
 
-    focus-follows-mouse 
-    //max-scroll-amount="0%"
+    focus-follows-mouse max-scroll-amount="0%"
     warp-mouse-to-focus
 }
 
-output "Microstep MSI G273CQ CD0H013901092" {
+output "DP-1" {
     position x=0 y=0
     mode "2560x1440@119.989"
     background-color "#000000"
+    variable-refresh-rate // on-demand=true
+    focus-at-startup
 }
 
-output "HKC OVERSEAS LIMITED 27E6QC 0000000000001" {
+output "DP-2" {
     position x=2560 y=0
     mode "2560x1440@119.871"
     background-color "#000000"
@@ -148,7 +149,7 @@ overview {
     zoom 0.70
 }
 
-layer-rule {
+/-layer-rule {
     match namespace="^wallpaper$"
     place-within-backdrop true
 }
@@ -306,7 +307,7 @@ window-rule {
     open-floating true
 }
 
-spawn-at-startup "wp"
+spawn-at-startup "wpsb"
 
 binds {
    

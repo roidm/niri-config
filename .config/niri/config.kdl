@@ -34,7 +34,6 @@ input {
 output "DP-1" {
     position x=0 y=0
     mode "2560x1440@119.989"
-    background-color "#000000"
     variable-refresh-rate // on-demand=true
     focus-at-startup
 }
@@ -42,7 +41,6 @@ output "DP-1" {
 output "DP-2" {
     position x=2560 y=0
     mode "2560x1440@119.871"
-    background-color "#000000"
 }
 
 
@@ -50,7 +48,6 @@ layout {
     gaps 14
     center-focused-column "on-overflow"
     background-color "transparent"
-    //empty-workspace-above-first
     always-center-single-column
     preset-column-widths {
         proportion 0.33
@@ -139,6 +136,10 @@ animations {
     }
 }
 
+debug {
+    deactivate-unfocused-windows
+}
+
 gestures {
     hot-corners {
         off
@@ -147,9 +148,12 @@ gestures {
 
 overview {
     zoom 0.70
+    workspace-shadow {
+        off
+    }
 }
 
-/-layer-rule {
+layer-rule {
     match namespace="^wallpaper$"
     place-within-backdrop true
 }
@@ -255,6 +259,7 @@ window-rule {
 
 window-rule {
     match app-id=r#"firefox$"#
+    match app-id=r#"com.vscodium.codium$"#
     open-maximized true
     open-on-output "DP-1"
 }
@@ -287,6 +292,7 @@ window-rule {
 
 window-rule {
     match app-id=r#"lpad$"#
+    match app-id=r#"xdg-desktop-portal-gtk$"#
     default-column-width { fixed 1350; }
     default-window-height { fixed 800; }
     open-floating true
@@ -308,6 +314,7 @@ window-rule {
 }
 
 spawn-at-startup "wpsb"
+spawn-at-startup "swayosd-server"
 
 binds {
    
@@ -361,19 +368,20 @@ binds {
     Shift+Print { screenshot-window; }
     Ctrl+Print { screenshot-screen; }
 
-    XF86AudioRaiseVolume allow-when-locked=true { spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "0.05+"; }
-    XF86AudioLowerVolume allow-when-locked=true { spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "0.05-"; }
-    XF86AudioMute        allow-when-locked=true { spawn "wpctl" "set-mute" "@DEFAULT_AUDIO_SINK@" "toggle"; }
-    XF86AudioMicMute     allow-when-locked=true { spawn "wpctl" "set-mute" "@DEFAULT_AUDIO_SOURCE@" "toggle"; }
+    XF86AudioRaiseVolume allow-when-locked=true { spawn "swayosd-client" "--output-volume" "raise"; }
+    XF86AudioLowerVolume allow-when-locked=true { spawn "swayosd-client" "--output-volume" "lower"; }
+    XF86AudioMute        allow-when-locked=true { spawn "swayosd-client" "--output-volume" "mute-toggle"; }
+    XF86AudioMicMute     allow-when-locked=true { spawn "swayosd-client" "--input-volume" "mute-toggle"; }
 
-    XF86AudioPlay 	{ spawn "playerctl" "play-pause"; }
-    XF86AudioStop	{ spawn "playerctl" "play-pause"; }
+    XF86AudioPlay 	{ spawn "swayosd-client" "--playerctl" "play-pause"; }
+    XF86AudioStop	{ spawn "swayosd-client" "--playerctl" "play-pause"; }
 
-    XF86AudioPrev	{ spawn "playerctl" "previous"; }
-    XF86AudioNext	{ spawn "playerctl" "next"; }
+    XF86AudioPrev	{ spawn "swayosd-client" "--playerctl" "previous"; }
+    XF86AudioNext	{ spawn "swayosd-client" "--playerctl" "next"; }
 
 
     Mod+Return { spawn "foot"; }
+    Alt+Return { spawn "alacritty"; }
     Mod+B { spawn "firefox-bin"; }
     Mod+D { spawn "fuzzel"; }
     Mod+E { spawn "fuzzel-emoji"; }
